@@ -1,8 +1,10 @@
 branches:
   only:
-    - develop
+  - develop
 install:
-  - npm install -g npm@2
+- npm install -g npm@2
 script: npm install && ./node_modules/.bin/grunt deploy
 env:
   global:
+  - secure: CI7oiITne8BnIC1tZDK3GG6Q7FXgCUVz3ihJnRss8F6eaziouaRtVGNkPMWCZRBGwjkDKrIRpBXPvxA2ctRQH0t4F+axWAiq7wKyedNuHXAmB3Y/Uu1rF6L/zFdywLvDeamGwNlkZjFB8XF8sgvXl+k4FXnKkfdyh97ifReJBjs=
+  - secure: BVfvq8JdTJ+28bHBxGk1fS5Yn68eLrOOTHRQ9/AtXYRC9LHnN8/HYc70sFea//15dGB3g8yClKFcRSzzADzK9+c0X3Io5GvOFxgx5EG7mPvY79a0z63pNeWW4Kof+KMKwUPSb9XajCNk6rfsJiT7hNquAJFTPjmWVT14d+2FfgI=
