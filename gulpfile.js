@@ -1,10 +1,10 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect');
-var server = require('gulp-webserver');
-
+var minifyHTML = require('gulp-minify-html');
 
 gulp.task('html', function() {
   gulp.src('src/index.html')
+    .pipe(minifyHTML())
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
