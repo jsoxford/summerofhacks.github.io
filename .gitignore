@@ -5,3 +5,5 @@ _site/
 css/*.css
 
 build
+
+.publish

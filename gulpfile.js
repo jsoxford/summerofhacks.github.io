@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var connect = require('gulp-connect');
 var minifyHTML = require('gulp-minify-html');
 var less = require('gulp-less');
+var ghPages = require('gulp-gh-pages');
 
 gulp.task('html', function() {
   gulp.src('src/index.html')
@@ -42,8 +43,12 @@ gulp.task('serve', ['build'], function() {
 });
 
 
-gulp.task('build', ['html', 'less', 'images', 'icons']);
+gulp.task('deploy', ['build'], function() {
+  return gulp.src('build/**/*')
+    .pipe(ghPages());
+});
 
+gulp.task('build', ['html', 'less', 'images', 'icons']);
 
 gulp.task('watch', function () {
   gulp.watch(['src/index.html'], ['html']);
