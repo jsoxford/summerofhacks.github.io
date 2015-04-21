@@ -9,6 +9,13 @@ gulp.task('html', function() {
     .pipe(connect.reload());
 });
 
+// flatten icons into root build directory
+gulp.task('icons', function() {
+  gulp
+    .src(['src/icons/*'])
+    .pipe(gulp.dest('build'));
+});
+
  
 gulp.task('serve', ['html'], function() {
   connect.server({
