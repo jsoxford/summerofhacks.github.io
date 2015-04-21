@@ -29,7 +29,8 @@ module.exports = function(grunt) {
           config: '_config.yml',
           serve: true,
           port: 5000,
-          nowatch: true
+          nowatch: false,
+          watch: true
         }
       },
     },
@@ -47,26 +48,26 @@ module.exports = function(grunt) {
         }]
       }
     },
-    uncss: {
-      dist: {
-        options: {
-          stylesheets: ['_site/css/style.css'],
-          ignore: [
-            '.post',
-            '.post-title',
-            /.eventInfo.*/,
-            /#MeetupMembers.*/,
-            /.collapse.*/,
-            /.in.*/,
-	    /col-xs-3.*/,
-	    /col-xs-9.*/
-          ]
-        },
-        files: {
-          '_site/css/style.css': ['*.html','**/*.html', '!node_modules/**/*.html']
-        }
-      },
-    },
+    // uncss: {
+    //   dist: {
+    //     options: {
+    //       stylesheets: ['_site/css/style.css'],
+    //       ignore: [
+    //         '.post',
+    //         '.post-title',
+    //         /.eventInfo.*/,
+    //         /#MeetupMembers.*/,
+    //         /.collapse.*/,
+    //         /.in.*/,
+	   //  /col-xs-3.*/,
+	   //  /col-xs-9.*/
+    //       ]
+    //     },
+    //     files: {
+    //       '_site/css/style.css': ['*.html','**/*.html', '!node_modules/**/*.html']
+    //     }
+    //   },
+    // },
     cssmin: {
       dist: {
         files: {
