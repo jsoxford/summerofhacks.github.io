@@ -7,15 +7,25 @@ var less = require('gulp-less');
 var ghPages = require('gulp-gh-pages');
 var awspublish = require('gulp-awspublish');
 
+
+var paths = {
+  assets: [
+    'CNAME',
+    'src/icons/*',
+    'src/images/*',
+    'src/script.js'
+  ]
+};
+
 gulp.task('html', function() {
-  gulp.src('src/index.html')
+  return gulp.src('src/index.html')
     .pipe(minifyHTML({quotes:true}))
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
 
 gulp.task('less', function() {
-  gulp.src('src/style.less')
+  return gulp.src('src/style.less')
     .pipe(less())
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
@@ -23,12 +33,8 @@ gulp.task('less', function() {
 
 // note: all asset paths are flattened
 gulp.task('assets', function() {
-  gulp
-    .src([
-      'CNAME',
-      'src/icons/*',
-      'src/images/*'
-    ])
+  return gulp
+    .src(paths.assets)
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
