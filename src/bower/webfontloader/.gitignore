@@ -1,0 +1,14 @@
+## MANUALLY ADDED - POST BOWER INSTALL
+## post bower
+CONTRIBUTING.md
+Gemfile
+Rakefile
+bin
+browsers.json
+lib
+package.json
+spec
+src
+tools
+webfontloader.gemspec
+.travis.yml
