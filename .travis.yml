@@ -1,10 +1,10 @@
 branches:
   only:
-  - develop
+    - develop
 install:
-- npm install -g npm@2
-script: npm install && ./node_modules/.bin/grunt deploy
+  - npm install -g npm@2
+script: npm install && ./node_modules/.bin/gulp publish
 env:
   global:
-  - secure: CI7oiITne8BnIC1tZDK3GG6Q7FXgCUVz3ihJnRss8F6eaziouaRtVGNkPMWCZRBGwjkDKrIRpBXPvxA2ctRQH0t4F+axWAiq7wKyedNuHXAmB3Y/Uu1rF6L/zFdywLvDeamGwNlkZjFB8XF8sgvXl+k4FXnKkfdyh97ifReJBjs=
-  - secure: BVfvq8JdTJ+28bHBxGk1fS5Yn68eLrOOTHRQ9/AtXYRC9LHnN8/HYc70sFea//15dGB3g8yClKFcRSzzADzK9+c0X3Io5GvOFxgx5EG7mPvY79a0z63pNeWW4Kof+KMKwUPSb9XajCNk6rfsJiT7hNquAJFTPjmWVT14d+2FfgI=
+  - secure: aEd8BTHY9L5thGNgVV68ZMAMT6z9a2YCoMrodBZ4eH2/etIh3gRpWSvmp4WXSa/nADqLWl61dvYU7fK6LT9VwKXICg0eVdrcPqEcr/5YDqauj6VVGCt3Xqj0m9PtU0KSBN85j/TonmVS3U0rumEk+eNvIKCEEHGqv89bmGIbWu0=
+  - secure: Gof19qe5JmTHyeblftyZ0Rsz+UMq/p3sxgJoRSciVN/XiJr8tniO0iilbGfzosa3+lQ9tUKhXLF0Wns5Koz7q3ZVI/29N57AcjtuTGGjT0VMggXYCRsZ2Y3lBA2dTomVmDOt5z5GYp3Qn4PDdaDA2pE4rr8VRqwhZgtbRfoT+ZQ=
