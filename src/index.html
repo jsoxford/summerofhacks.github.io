@@ -28,8 +28,16 @@
     <meta name="msapplication-config" content="/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-    <link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script type="text/javascript">
+    (function(el){
+      el.className += 'font-wait';
+      setTimeout(function(){
+        el.className += ' font-waited';
+      }, 1500);
+    })(document.documentElement);
+    </script>
   </head>
   <body>
 
@@ -39,12 +47,15 @@
 
     <div id="main">
       <h2><span class="date">23rd May</span> NodeSchool</h2>
+      <p>These are in-person hosted workshops, usually free, in which workshoppers are used as curriculum and mentors help attendees work through the challenges.</p>
       <h2><span class="date">27th June</span> SusHack</h2>
+      <p> SusHack helps developers get together to create solutions to sustainability problems using their skills in development and lots of coffee.
+      </p>
       <h2><span class="date">25th July</span> NodeBots</h2>
       <h2><span class="date">8th &amp; 9th August</span> RailsBridge</h2>
       <h2><span class="date">22nd August</span> JSOxHack</h2>
     </div>
 
-    <script type="text/javascript" src="script.js" defer></script>
+    <script type="text/javascript" src="all.js" defer></script>
   </body>
 </html>

@@ -4,13 +4,44 @@ body{
   background: @yellow;
   text-align: center;
   font-size: 150%;
+  font-family: sans-serif;
 }
 h1, h2 {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Fredoka One', sans-serif;
 
   font-weight: 100;
   letter-spacing: .07em;
   text-transform: uppercase;
+}
+
+// potential highlight
+// h2{
+//   background:black;
+//   color:#fff;
+//   padding:.5em
+// }
+
+p{
+  font-size:.8em;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 2em;
+  padding:0 1em;
+  max-width: 25em;
+}
+
+// only show text once fonts have loaded
+#main{
+  -webkit-transition:all .2s;
+  .font-wait & {
+    opacity: 0;
+    -webkit-transform: translate(10px, 0);
+  }
+
+  .font-waited &,
+  .wf-active & {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+  }
 }
 
 #logo{
@@ -67,4 +98,3 @@ body{
     text-align: center;
   }
 }
-  
