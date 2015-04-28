@@ -1,8 +1,11 @@
+require('dotenv').load();
+
 var gulp = require('gulp');
 var connect = require('gulp-connect');
 var minifyHTML = require('gulp-minify-html');
 var less = require('gulp-less');
 var ghPages = require('gulp-gh-pages');
+var awspublish = require('gulp-awspublish');
 
 gulp.task('html', function() {
   gulp.src('src/index.html')
@@ -18,18 +21,14 @@ gulp.task('less', function() {
     .pipe(connect.reload());
 });
 
-// flatten icons into root build directory
-gulp.task('icons', function() {
+// note: all asset paths are flattened
+gulp.task('assets', function() {
   gulp
-    .src(['src/icons/*'])
-    .pipe(gulp.dest('build'))
-    .pipe(connect.reload());
-});
-
-// flatten icons into root build directory
-gulp.task('images', function() {
-  gulp
-    .src(['src/images/*'])
+    .src([
+      'CNAME',
+      'src/icons/*',
+      'src/images/*'
+    ])
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
@@ -48,12 +47,30 @@ gulp.task('deploy', ['build'], function() {
     .pipe(ghPages());
 });
 
-gulp.task('build', ['html', 'less', 'images', 'icons']);
+gulp.task('publish', function() {
+
+  var publisher = awspublish.create({
+    params: {
+      Bucket: "summerofhacks.io"
+    },
+    region: 'eu-west-1',
+    accessKeyId: process.env.AWS_KEY,
+    secretAccessKey: process.env.AWS_SECRET
+  });
+ 
+  return gulp.src('build/*')
+    .pipe(publisher.publish())
+    .pipe(awspublish.reporter());
+});
+
+
+
+gulp.task('build', ['html', 'less', 'assets']);
 
 gulp.task('watch', function () {
   gulp.watch(['src/index.html'], ['html']);
   gulp.watch(['src/style.less'], ['less']);
-  gulp.watch(['src/images/*'], ['images']);
+  gulp.watch(paths.assets, ['assets']);
 });
 
 gulp.task('default', ['serve', 'watch']);

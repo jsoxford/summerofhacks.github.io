@@ -7,3 +7,6 @@ css/*.css
 build
 
 .publish
+
+.env
+
