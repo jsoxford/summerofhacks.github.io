@@ -1,19 +1,16 @@
-@yellow: #FFF200;
-
-body{
-  background: @yellow;
+body {
+  background: #fff200;
   text-align: center;
   font-size: 150%;
 }
-h1, h2 {
+h1,
+h2 {
   font-family: 'Fredoka One', cursive;
-
   font-weight: 100;
   letter-spacing: .07em;
   text-transform: uppercase;
 }
-
-#logo{
+#logo {
   background-image: url(logo.svg);
   background-size: contain;
   background-repeat: no-repeat;
@@ -21,24 +18,15 @@ h1, h2 {
   text-indent: -9999px;
   height: 500px;
   width: 100%;
-
-
 }
-
 .date {
-  font-size:.6em;
+  font-size: .6em;
   display: block;
 }
-
-
-
-// Positioning
-
-html{
+html {
   height: 100%;
 }
-
-body{
+body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -46,25 +34,21 @@ body{
   min-height: 100%;
   align-items: center;
 }
-
 #head {
   flex: 1;
 }
 #main {
   flex: 1;
-  text-align:left;
+  text-align: left;
 }
-
-
 @media (max-width: 450px) {
-  body{
+  body {
     display: block;
   }
   #logo {
     height: 300px;
   }
-  #main{
+  #main {
     text-align: center;
   }
 }
-  
