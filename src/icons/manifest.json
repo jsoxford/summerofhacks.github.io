@@ -1,6 +1,7 @@
 {
 	"short_name": "SoH",
 	"name": "Summer of Hacks",
+	"display": "standalone",
 	"icons": [
 		{
 			"src": "android-chrome-36x36.png",
