@@ -14,20 +14,41 @@ h1, h2 {
   text-transform: uppercase;
 }
 
-// potential highlight
-// h2{
-//   background:black;
-//   color:#fff;
-//   padding:.5em
-// }
+a {
+  color:#000;
+  text-decoration: none;
+}
 
-p{
+p {
   font-size:.8em;
   font-family: 'Roboto', sans-serif;
   margin-bottom: 2em;
   padding:0 1em;
   max-width: 25em;
 }
+
+
+/*  Section highlighiting (works, but looks a bit rubbish)
+
+section {
+  p {display:none;}  
+
+  &:target{
+    h1, h2 {
+      padding:.5em;
+      &, & * {
+        background:black;
+        color:#fff;
+      }
+    }
+
+    p {
+      display:block;
+    }
+  }
+}
+
+*/
 
 // only show text once fonts have loaded
 #main{
