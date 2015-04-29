@@ -4,7 +4,9 @@ var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
 var connect = require('gulp-connect');
-var minifyHTML = require('gulp-minify-html');
+var htmlmin = require('gulp-html-minifier');
+var inlinesource = require('gulp-inline-source');
+var uglify = require('gulp-uglify');
 var less = require('gulp-less');
 var ghPages = require('gulp-gh-pages');
 var awspublish = require('gulp-awspublish');
@@ -26,7 +28,20 @@ var paths = {
 
 gulp.task('html', function() {
   return gulp.src('src/index.html')
-    .pipe(minifyHTML({quotes:true}))
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('build'))
+    .pipe(connect.reload());
+});
+
+gulp.task('html.dist', ['html', 'less'], function(){
+  return gulp.src('build/index.html')
+    .pipe(inlinesource())
+    .pipe(htmlmin({
+      minifyJS: true, 
+      minifyCSS:true,
+      removeComments: true,
+      collapseWhitespace: true
+    }))
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
@@ -42,6 +57,13 @@ gulp.task('less', function() {
 gulp.task('js', function() {
   return gulp.src(paths.js)
     .pipe(concat('all.js', {newLine:';'}))
+    .pipe(gulp.dest('build'))
+    .pipe(connect.reload());
+});
+
+gulp.task('js.dist', ['js'], function() {
+  return gulp.src('build/all.js')
+    .pipe(uglify())
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
@@ -63,7 +85,7 @@ gulp.task('serve', ['build'], function() {
 });
 
 
-gulp.task('deploy', ['build'], function() {
+gulp.task('deploy', ['build.dist'], function() {
 
   var options = {};
 
@@ -76,7 +98,7 @@ gulp.task('deploy', ['build'], function() {
     .pipe(ghPages(options));
 });
 
-gulp.task('publish', function() {
+gulp.task('publish', ['build.dist'], function() {
 
   var publisher = awspublish.create({
     params: {
@@ -100,7 +122,8 @@ gulp.task('publish', function() {
 
 
 
-gulp.task('build', ['html', 'less', 'js', 'assets']);
+gulp.task('build',      ['html', 'less', 'js', 'assets']);
+gulp.task('build.dist', ['html.dist', 'less', 'js.dist', 'assets']);
 
 gulp.task('watch', function () {
   gulp.watch(['src/index.html'], ['html']);
