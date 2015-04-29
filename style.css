@@ -120,8 +120,30 @@ body {
 .js section p {
   display: none;
 }
-.js h2 {
-  cursor: pointer;
+.js section h2 a {
+  display: inline-block;
+}
+.js section h2 a:after {
+  -webkit-transition: all .2s;
+          transition: all .2s;
+  content: '<';
+  display: inline-block;
+  position: absolute;
+  margin-left: .2em;
+  opacity: .2;
+}
+.js section h2 a:hover:after {
+  opacity: 1;
+}
+.js.has-content section.active h2 a:hover {
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+}
+.js.has-content section.active h2 a:after {
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
 .has-content section {
   -webkit-transition: all .3s;
