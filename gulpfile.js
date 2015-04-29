@@ -14,11 +14,11 @@ var paths = {
   assets: [
     'CNAME',
     'src/icons/*',
-    'src/images/*',
-    'src/script.js'
+    'src/images/*'
   ],
   js: [
     'src/bower/webfontloader/webfontloader.js',
+    'src/bower/bean/bean.min.js',
     'src/script.js'
   ]
 };
@@ -39,7 +39,7 @@ gulp.task('less', function() {
 
 gulp.task('js', function() {
   return gulp.src(paths.js)
-    .pipe(concat('all.js'))
+    .pipe(concat('all.js', {newLine:';'}))
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
@@ -90,7 +90,7 @@ gulp.task('publish', function() {
 
 
 
-gulp.task('build', ['html', 'less', 'assets']);
+gulp.task('build', ['html', 'less', 'js', 'assets']);
 
 gulp.task('watch', function () {
   gulp.watch(['src/index.html'], ['html']);
@@ -99,4 +99,4 @@ gulp.task('watch', function () {
   gulp.watch(paths.js, ['js']);
 });
 
-gulp.task('default', ['serve', 'watch']);
+gulp.task('default', ['serve', 'watch', 'build']);

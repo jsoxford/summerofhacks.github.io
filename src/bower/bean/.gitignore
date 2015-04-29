@@ -1,0 +1,13 @@
+*.swp
+node_modules
+/build
+
+Makefile
+README.md
+buster.js
+component.json
+integration
+make
+package.json
+src
+tests
