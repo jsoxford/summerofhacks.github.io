@@ -31,16 +31,16 @@ p {
 
 // only show text once fonts have loaded
 #main{
-  -webkit-transition:all .2s;
+  transition:all .2s;
   .font-wait & {
     opacity: 0;
-    -webkit-transform: translate(10px, 0);
+    transform: translate(10px, 0);
   }
 
   .font-waited &,
   .wf-active & {
     opacity: 1;
-    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
   }
 }
 
@@ -105,18 +105,18 @@ body{
 .has-content {
 
   section{
-    -webkit-transition: all .3s;
+    transition: all .3s;
     opacity: 0.2;
-    -webkit-transform: translate(10px, 0);
+    transform: translate(10px, 0);
   }
 
   section.active{
     opacity: 1; 
-    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
 
     p {
       display: block;
-      -webkit-transform: translate(0, 0);
+      transform: translate(0, 0);
     }
   }
 
@@ -139,7 +139,7 @@ body{
     text-align: center;
   }
   .has-content section {
-    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   p{
     padding: 0 1em;

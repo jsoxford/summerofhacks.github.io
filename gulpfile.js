@@ -1,6 +1,7 @@
 require('dotenv').load();
 
 var gulp = require('gulp');
+var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
 var connect = require('gulp-connect');
 var minifyHTML = require('gulp-minify-html');
@@ -33,6 +34,7 @@ gulp.task('html', function() {
 gulp.task('less', function() {
   return gulp.src('src/style.less')
     .pipe(less())
+    .pipe(autoprefixer())
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
