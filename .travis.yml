@@ -3,7 +3,7 @@ branches:
     - master
 install:
   - npm install -g npm@2
-script: npm install && ./node_modules/.bin/gulp publish
+script: npm install && ./node_modules/.bin/gulp deploy
 env:
   global:
   - secure: aEd8BTHY9L5thGNgVV68ZMAMT6z9a2YCoMrodBZ4eH2/etIh3gRpWSvmp4WXSa/nADqLWl61dvYU7fK6LT9VwKXICg0eVdrcPqEcr/5YDqauj6VVGCt3Xqj0m9PtU0KSBN85j/TonmVS3U0rumEk+eNvIKCEEHGqv89bmGIbWu0=
