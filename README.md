@@ -6,23 +6,23 @@ Summer of Hacks is an event series organised and run by [JSOxford](http://jsoxfo
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jsoxford/jsoxford.github.com?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/jsoxford/summerofhacks.github.io.svg?branch=develop)](https://travis-ci.org/jsoxford/summerofhacks.github.io)
 
 
-This is a jekyll/github pages site.  You can run it locally with these commands
+This is a web site.  You can run it locally with these commands
 
 ```bash
-npm install && npm start
+# install the gulp task runner thing
+npm install --global gulp
+
+# install the project dependencies
+npm install
+
+# run a web server on localhost:8080
+gulp
 ```
 
-You can also build and optimise the site separately:
-```bash
-npm install # install npm, bower and gem dependencies
-./node_modules/.bin/grunt build # build the site into _site
-./node_modules/.bin/grunt optimize # make it wicked-fast
-```
-
-If you're feeling really adventurous, you can deploy it like so:
+If you want to deploy changes to the live site, run this:
 
 ```bash
-npm install && ./node_modules/.bin/grunt deploy
+gulp deploy
 ```
 
 Though you shouldn't need to, we build automatically on Travis.

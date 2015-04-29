@@ -64,8 +64,16 @@ gulp.task('serve', ['build'], function() {
 
 
 gulp.task('deploy', ['build'], function() {
+
+  var options = {};
+
+  if('GH_LOGIN' in process.env)
+    options = {
+      remoteUrl:'https://' + GH_LOGIN + ':' + GH_TOKEN + '@github.com/jsoxford/summerofhacks.github.io.git'
+    };
+
   return gulp.src('build/**/*')
-    .pipe(ghPages());
+    .pipe(ghPages(options));
 });
 
 gulp.task('publish', function() {
