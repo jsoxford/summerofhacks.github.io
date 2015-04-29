@@ -1,4 +1,9 @@
-
+// fonts!
+WebFont.load({
+  google: {
+    families: ['Fredoka One', 'Roboto']
+  }
+});
 
 
 // Analytics
@@ -12,8 +17,59 @@ ga('create', 'UA-61944527-1', 'auto');
 ga('send', 'pageview');
 
 
-WebFont.load({
-  google: {
-    families: ['Fredoka One', 'Roboto']
+
+
+
+(function(YES){
+
+  if(!YES) {
+    // .. awwww, booo
+    document.getElementsByTagName('html')[0].className = 'nope';
+    return;
   }
-});
+
+
+  var current, html = document.documentElement;
+
+  bean.on(document.documentElement, 'click', 'section h2', function(event){
+    event.preventDefault();
+
+    // remove the active element
+    var active = document.querySelector('.active');
+    if(active) active.classList.remove('active');
+
+
+    var h2 = event.currentTarget;
+
+    if(h2 === current) {
+      // toggle off
+
+      html.classList.remove('has-content');
+      current = null;
+
+    } else {
+      // toggle on
+
+      html.classList.add('has-content');
+      h2.parentElement.classList.add('active');
+      current = h2;
+
+    }
+    
+  });
+
+  bean.on(logo, 'click', function(event){
+    // remove the active element
+    var active = document.querySelector('.active');
+    if(active) active.classList.remove('active');
+
+    html.classList.remove('has-content');
+    current = null;
+  });
+
+
+})(
+  document.querySelector &&
+  document.documentElement &&
+  document.documentElement.classList
+);

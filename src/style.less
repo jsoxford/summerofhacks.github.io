@@ -23,32 +23,11 @@ p {
   font-size:.8em;
   font-family: 'Roboto', sans-serif;
   margin-bottom: 2em;
-  padding:0 1em;
   max-width: 25em;
+
+  padding-right: 1em;
 }
 
-
-/*  Section highlighiting (works, but looks a bit rubbish)
-
-section {
-  p {display:none;}  
-
-  &:target{
-    h1, h2 {
-      padding:.5em;
-      &, & * {
-        background:black;
-        color:#fff;
-      }
-    }
-
-    p {
-      display:block;
-    }
-  }
-}
-
-*/
 
 // only show text once fonts have loaded
 #main{
@@ -73,15 +52,12 @@ section {
   text-indent: -9999px;
   height: 500px;
   width: 100%;
-
-
 }
 
 .date {
   font-size:.6em;
   display: block;
 }
-
 
 
 // Positioning
@@ -100,13 +76,57 @@ body{
 }
 
 #head {
+  transition: all .5s;
   flex: 1;
 }
 #main {
+  transition: all .7s;
   flex: 1;
   text-align:left;
 }
+#content {
+  transition: all 1s;
+  flex: 0.01;
+  text-align: left;
+  font-size: 1.2em;
+}
 
+
+.js {
+  section {
+    p {display:none;}  
+  }
+
+  h2 {
+    cursor: pointer;
+  }
+}
+
+.has-content {
+
+  section{
+    -webkit-transition: all .3s;
+    opacity: 0.2;
+    -webkit-transform: translate(10px, 0);
+  }
+
+  section.active{
+    opacity: 1; 
+    -webkit-transform: translate(0, 0);
+
+    p {
+      display: block;
+      -webkit-transform: translate(0, 0);
+    }
+  }
+
+  #head {
+    flex: 0.7;
+  }
+  #main {
+    flex: 1;
+  }
+}
 
 @media (max-width: 450px) {
   body{
@@ -117,5 +137,11 @@ body{
   }
   #main{
     text-align: center;
+  }
+  .has-content section {
+    -webkit-transform: translate(0, 0);
+  }
+  p{
+    padding: 0 1em;
   }
 }
