@@ -91,7 +91,7 @@ gulp.task('deploy', ['build.dist'], function() {
 
   if('GH_LOGIN' in process.env)
     options = {
-      remoteUrl:'https://' + GH_LOGIN + ':' + GH_TOKEN + '@github.com/jsoxford/summerofhacks.github.io.git'
+      remoteUrl:'https://' + process.env.GH_LOGIN + ':' + process.env.GH_TOKEN + '@github.com/jsoxford/summerofhacks.github.io.git'
     };
 
   return gulp.src('build/**/*')
