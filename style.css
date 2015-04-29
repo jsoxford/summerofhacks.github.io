@@ -22,6 +22,21 @@ p {
   max-width: 25em;
   padding-right: 1em;
 }
+.actions {
+  text-align: right;
+  margin: 0;
+}
+.actions a {
+  background: #000;
+  color: #fff;
+  font-family: 'Fredoka One', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: .3em .6em;
+  border-radius: 2px;
+}
+.actions a:hover {
+  color: #fff200;
+}
 #main {
   -webkit-transition: all .2s;
           transition: all .2s;
@@ -157,5 +172,9 @@ body {
   }
   p {
     padding: 0 1em;
+  }
+  .actions {
+    text-align: center;
+    margin-bottom: 3em;
   }
 }
