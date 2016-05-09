@@ -11,7 +11,12 @@ var less = require('gulp-less');
 var ghPages = require('gulp-gh-pages');
 var awspublish = require('gulp-awspublish');
 var RevAll = require('gulp-rev-all');
-
+var data = require('gulp-data');
+var handlebars = require('gulp-compile-handlebars');
+var moment = require('moment');
+var frontMatter = require('gulp-front-matter');
+var eventDataConcat = require('./lib/event-data-concat.js');
+var marked = require('gulp-marked')
 
 var paths = {
   assets: [
@@ -28,6 +33,14 @@ var paths = {
 
 gulp.task('html', function() {
   return gulp.src('src/index.html')
+    .pipe(data(function(file) {
+      return {events:require('./build/events.json')};
+    }))
+    .pipe(handlebars(null, {
+      helpers: {
+        short_date: function(str) {return moment(str).format("Do MMM");}
+      }
+    }))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
@@ -37,7 +50,7 @@ gulp.task('html.dist', ['html', 'less'], function(){
   return gulp.src('build/index.html')
     .pipe(inlinesource())
     .pipe(htmlmin({
-      minifyJS: true, 
+      minifyJS: true,
       minifyCSS:true,
       removeComments: true,
       collapseWhitespace: true
@@ -76,7 +89,15 @@ gulp.task('assets', function() {
     .pipe(connect.reload());
 });
 
- 
+// read in all the events into a (public) json file
+gulp.task('event-data', function() {
+  return gulp.src('events/*.md')
+    .pipe(frontMatter())
+    .pipe(marked())
+    .pipe(eventDataConcat('events.json'))
+    .pipe(gulp.dest('build'));
+});
+
 gulp.task('serve', ['build'], function() {
   connect.server({
     root: 'build',
@@ -112,7 +133,7 @@ gulp.task('publish', ['build.dist'], function() {
   var revAll = new RevAll({
     dontRenameFile: [/^\/favicon.ico$/g, /^\/index.html/g]
   });
- 
+
   return gulp.src('build/*')
     .pipe(revAll.revision())
     .pipe(publisher.publish())
