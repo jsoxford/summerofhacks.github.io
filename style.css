@@ -1,5 +1,5 @@
 body {
-  background: #fff200;
+  background: #FFF200;
   text-align: center;
   font-size: 150%;
   font-family: sans-serif;
@@ -35,7 +35,7 @@ p {
   border-radius: 2px;
 }
 .actions a:hover {
-  color: #fff200;
+  color: #FFF200;
 }
 #main {
   -webkit-transition: all .2s;
@@ -44,14 +44,12 @@ p {
 .font-wait #main {
   opacity: 0;
   -webkit-transform: translate(10px, 0);
-      -ms-transform: translate(10px, 0);
           transform: translate(10px, 0);
 }
 .font-waited #main,
 .wf-active #main {
   opacity: 1;
   -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
           transform: translate(0, 0);
 }
 #logo {
@@ -137,12 +135,10 @@ body {
 }
 .js.has-content section.active h2 a:hover {
   -webkit-transform: none;
-      -ms-transform: none;
           transform: none;
 }
 .js.has-content section.active h2 a:after {
   -webkit-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
           transform: rotate(-90deg);
 }
 .has-content section {
@@ -150,19 +146,16 @@ body {
           transition: all .3s;
   opacity: 0.2;
   -webkit-transform: translate(10px, 0);
-      -ms-transform: translate(10px, 0);
           transform: translate(10px, 0);
 }
 .has-content section.active {
   opacity: 1;
   -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
           transform: translate(0, 0);
 }
 .has-content section.active p {
   display: block;
   -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
           transform: translate(0, 0);
 }
 .has-content #head {
@@ -189,7 +182,6 @@ body {
   }
   .has-content section {
     -webkit-transform: translate(0, 0);
-        -ms-transform: translate(0, 0);
             transform: translate(0, 0);
   }
   p {
