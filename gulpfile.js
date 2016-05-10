@@ -19,18 +19,18 @@ var eventData = require('./lib/event-data.js');
 var paths = {
   assets: [
     'CNAME',
-    'src/icons/*',
-    'src/images/*'
+    'site/icons/*',
+    'site/images/*'
   ],
   js: [
-    'src/bower/webfontloader/webfontloader.js',
-    'src/bower/bean/bean.min.js',
-    'src/script.js'
+    'site/bower/webfontloader/webfontloader.js',
+    'site/bower/bean/bean.min.js',
+    'site/script.js'
   ]
 };
 
 gulp.task('html', function() {
-  return gulp.src('src/index.html')
+  return gulp.src('site/index.html')
     .pipe(data(function(file, callback) {
       // wrap in {events: … } for template
       eventData('events', function(err, data) {
@@ -61,7 +61,7 @@ gulp.task('html.dist', ['html', 'less'], function(){
 });
 
 gulp.task('less', function() {
-  return gulp.src('src/style.less')
+  return gulp.src('site/style.less')
     .pipe(less())
     .pipe(autoprefixer())
     .pipe(gulp.dest('build'))
@@ -138,8 +138,8 @@ gulp.task('build',      ['html', 'less', 'js', 'assets']);
 gulp.task('build.dist', ['html.dist', 'less', 'js.dist', 'assets']);
 
 gulp.task('watch', function () {
-  gulp.watch(['src/index.html','events/*.md'], ['html']);
-  gulp.watch(['src/style.less'], ['less']);
+  gulp.watch(['site/index.html','events/*.md'], ['html']);
+  gulp.watch(['site/style.less'], ['less']);
   gulp.watch(paths.assets, ['assets']);
   gulp.watch(paths.js, ['js']);
 });
