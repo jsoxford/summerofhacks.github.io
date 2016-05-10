@@ -3,7 +3,7 @@ The summerofhacks.io website
 
 Summer of Hacks is an event series organised and run by [JSOxford](http://jsoxford.com).
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jsoxford/jsoxford.github.com?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/jsoxford/summerofhacks.github.io.svg?branch=develop)](https://travis-ci.org/jsoxford/summerofhacks.github.io) [![Circle CI](https://circleci.com/gh/jsoxford/summerofhacks.github.io.svg?style=svg)](https://circleci.com/gh/jsoxford/summerofhacks.github.io)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jsoxford/jsoxford.github.com?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/jsoxford/summerofhacks.github.io.svg?branch=develop)](https://travis-ci.org/jsoxford/summerofhacks.github.io)
 
 
 This is a web site.  You can run it locally with these commands
@@ -39,5 +39,3 @@ We continuously build the site using [TravisCI](http://travis-ci.org). The confi
 travis encrypt GH_LOGIN=YOUR_GITHUB_USERNAME --add
 travis encrypt GH_TOKEN=YOUR_APPLICATION_TOKEN --add
 ```
-
-We have a [Tron-ci](http://tron-ci.herokuapp.com/jobs/1519935/) job to trigger a build every day at midnight, so scheduled pages and/or any time-sensitive preprocessing can occur without us having to modify the repository.
