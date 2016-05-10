@@ -30,7 +30,7 @@ var paths = {
 };
 
 gulp.task('html', function() {
-  return gulp.src('src/index.html')
+  return gulp.src('src/*.html')
     .pipe(data(function(file, callback) {
       // wrap in {events: … } for template
       eventData('events', function(err, data) {
@@ -48,7 +48,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('html.dist', ['html', 'less'], function(){
-  return gulp.src('build/index.html')
+  return gulp.src('build/*.html')
     .pipe(inlinesource())
     .pipe(htmlmin({
       minifyJS: true,
@@ -123,7 +123,7 @@ gulp.task('deploy:aws', ['build.dist'], function() {
   });
 
   var revAll = new RevAll({
-    dontRenameFile: [/^\/favicon.ico$/g, /^\/index.html/g]
+    dontRenameFile: [/^\/favicon\.ico$/g, /^\/.*\.html/g]
   });
 
   return gulp.src('build/*')
@@ -138,7 +138,7 @@ gulp.task('build',      ['html', 'less', 'js', 'assets']);
 gulp.task('build.dist', ['html.dist', 'less', 'js.dist', 'assets']);
 
 gulp.task('watch', function () {
-  gulp.watch(['src/index.html','events/*.md'], ['html']);
+  gulp.watch(['src/*.html','events/*.md'], ['html']);
   gulp.watch(['src/style.less'], ['less']);
   gulp.watch(paths.assets, ['assets']);
   gulp.watch(paths.js, ['js']);
