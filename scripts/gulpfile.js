@@ -98,7 +98,7 @@ gulp.task('serve', ['build'], function() {
 });
 
 
-gulp.task('deploy', ['build.dist'], function() {
+gulp.task('deploy:gh', ['build.dist'], function() {
 
   var options = {};
 
@@ -111,7 +111,7 @@ gulp.task('deploy', ['build.dist'], function() {
     .pipe(ghPages(options));
 });
 
-gulp.task('publish', ['build.dist'], function() {
+gulp.task('deploy:aws', ['build.dist'], function() {
 
   var publisher = awspublish.create({
     params: {
@@ -145,3 +145,5 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['serve', 'watch', 'build']);
+
+gulp.task('deploy', ['deploy:gh']);
