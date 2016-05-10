@@ -18,22 +18,22 @@ var eventData = require('./lib/event-data.js');
 
 var paths = {
   assets: [
-    '../site/CNAME',
-    '../site/icons/*',
-    '../site/images/*'
+    'src/CNAME',
+    'src/icons/*',
+    'src/images/*'
   ],
   js: [
-    '../site/bower/webfontloader/webfontloader.js',
-    '../site/bower/bean/bean.min.js',
-    '../site/script.js'
+    'src/bower/webfontloader/webfontloader.js',
+    'src/bower/bean/bean.min.js',
+    'src/script.js'
   ]
 };
 
 gulp.task('html', function() {
-  return gulp.src('../site/index.html')
+  return gulp.src('src/index.html')
     .pipe(data(function(file, callback) {
       // wrap in {events: … } for template
-      eventData('../events', function(err, data) {
+      eventData('events', function(err, data) {
         callback(err, data ? {events: data} : null)
       })
     }))
@@ -43,12 +43,12 @@ gulp.task('html', function() {
       }
     }))
     .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('../_site'))
+    .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
 
 gulp.task('html.dist', ['html', 'less'], function(){
-  return gulp.src('../_site/index.html')
+  return gulp.src('build/index.html')
     .pipe(inlinesource())
     .pipe(htmlmin({
       minifyJS: true,
@@ -56,29 +56,29 @@ gulp.task('html.dist', ['html', 'less'], function(){
       removeComments: true,
       collapseWhitespace: true
     }))
-    .pipe(gulp.dest('../_site'))
+    .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
 
 gulp.task('less', function() {
-  return gulp.src('../site/style.less')
+  return gulp.src('src/style.less')
     .pipe(less())
     .pipe(autoprefixer())
-    .pipe(gulp.dest('../_site'))
+    .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
 
 gulp.task('js', function() {
   return gulp.src(paths.js)
     .pipe(concat('all.js', {newLine:';'}))
-    .pipe(gulp.dest('../_site'))
+    .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
 
 gulp.task('js.dist', ['js'], function() {
-  return gulp.src('../_site/all.js')
+  return gulp.src('build/all.js')
     .pipe(uglify())
-    .pipe(gulp.dest('../_site'))
+    .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
 
@@ -86,13 +86,13 @@ gulp.task('js.dist', ['js'], function() {
 gulp.task('assets', function() {
   return gulp
     .src(paths.assets)
-    .pipe(gulp.dest('../_site'))
+    .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
 
 gulp.task('serve', ['build'], function() {
   connect.server({
-    root: '../_site',
+    root: 'build',
     livereload: true
   });
 });
@@ -107,7 +107,7 @@ gulp.task('deploy:gh', ['build.dist'], function() {
       remoteUrl:'https://' + process.env.GH_LOGIN + ':' + process.env.GH_TOKEN + '@github.com/jsoxford/summerofhacks.github.io.git'
     };
 
-  return gulp.src('../_site/**/*')
+  return gulp.src('build/**/*')
     .pipe(ghPages(options));
 });
 
@@ -126,7 +126,7 @@ gulp.task('deploy:aws', ['build.dist'], function() {
     dontRenameFile: [/^\/favicon.ico$/g, /^\/index.html/g]
   });
 
-  return gulp.src('../_site/*')
+  return gulp.src('build/*')
     .pipe(revAll.revision())
     .pipe(publisher.publish())
     .pipe(publisher.cache())
@@ -138,8 +138,8 @@ gulp.task('build',      ['html', 'less', 'js', 'assets']);
 gulp.task('build.dist', ['html.dist', 'less', 'js.dist', 'assets']);
 
 gulp.task('watch', function () {
-  gulp.watch(['../site/index.html','../events/*.md'], ['html']);
-  gulp.watch(['../site/style.less'], ['less']);
+  gulp.watch(['src/index.html','events/*.md'], ['html']);
+  gulp.watch(['src/style.less'], ['less']);
   gulp.watch(paths.assets, ['assets']);
   gulp.watch(paths.js, ['js']);
 });

@@ -9,7 +9,6 @@ Summer of Hacks is an event series organised and run by [JSOxford](http://jsoxfo
 This is a web site.  You can run it locally with these commands
 
 ```bash
-cd scripts
 
 # install the gulp task runner thing
 npm install --global gulp
