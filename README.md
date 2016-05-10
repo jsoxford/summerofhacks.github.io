@@ -3,12 +3,14 @@ The summerofhacks.io website
 
 Summer of Hacks is an event series organised and run by [JSOxford](http://jsoxford.com).
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jsoxford/jsoxford.github.com?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/jsoxford/summerofhacks.github.io.svg?branch=develop)](https://travis-ci.org/jsoxford/summerofhacks.github.io)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jsoxford/jsoxford.github.com?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/jsoxford/summerofhacks.github.io.svg?branch=develop)](https://travis-ci.org/jsoxford/summerofhacks.github.io) [![Circle CI](https://circleci.com/gh/jsoxford/summerofhacks.github.io.svg?style=svg)](https://circleci.com/gh/jsoxford/summerofhacks.github.io)
 
 
 This is a web site.  You can run it locally with these commands
 
 ```bash
+cd scripts
+
 # install the gulp task runner thing
 npm install --global gulp
 

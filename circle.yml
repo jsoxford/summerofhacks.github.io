@@ -1,6 +1,7 @@
 general:
+  build_dir: scripts
   artifacts:
-    - "build"
+    - '_site'
 
 deployment:
   aws_test:
