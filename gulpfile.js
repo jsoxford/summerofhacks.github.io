@@ -11,11 +11,14 @@ var less = require('gulp-less');
 var ghPages = require('gulp-gh-pages');
 var awspublish = require('gulp-awspublish');
 var RevAll = require('gulp-rev-all');
-
+var data = require('gulp-data');
+var handlebars = require('gulp-compile-handlebars');
+var moment = require('moment');
+var eventData = require('./lib/event-data.js');
 
 var paths = {
   assets: [
-    'CNAME',
+    'src/CNAME',
     'src/icons/*',
     'src/images/*'
   ],
@@ -28,6 +31,17 @@ var paths = {
 
 gulp.task('html', function() {
   return gulp.src('src/index.html')
+    .pipe(data(function(file, callback) {
+      // wrap in {events: … } for template
+      eventData('events', function(err, data) {
+        callback(err, data ? {events: data} : null)
+      })
+    }))
+    .pipe(handlebars(null, {
+      helpers: {
+        short_date: function(str) {return moment(str).format("Do MMM");}
+      }
+    }))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
@@ -37,7 +51,7 @@ gulp.task('html.dist', ['html', 'less'], function(){
   return gulp.src('build/index.html')
     .pipe(inlinesource())
     .pipe(htmlmin({
-      minifyJS: true, 
+      minifyJS: true,
       minifyCSS:true,
       removeComments: true,
       collapseWhitespace: true
@@ -76,7 +90,6 @@ gulp.task('assets', function() {
     .pipe(connect.reload());
 });
 
- 
 gulp.task('serve', ['build'], function() {
   connect.server({
     root: 'build',
@@ -85,7 +98,7 @@ gulp.task('serve', ['build'], function() {
 });
 
 
-gulp.task('deploy', ['build.dist'], function() {
+gulp.task('deploy:gh', ['build.dist'], function() {
 
   var options = {};
 
@@ -98,7 +111,7 @@ gulp.task('deploy', ['build.dist'], function() {
     .pipe(ghPages(options));
 });
 
-gulp.task('publish', ['build.dist'], function() {
+gulp.task('deploy:aws', ['build.dist'], function() {
 
   var publisher = awspublish.create({
     params: {
@@ -112,7 +125,7 @@ gulp.task('publish', ['build.dist'], function() {
   var revAll = new RevAll({
     dontRenameFile: [/^\/favicon.ico$/g, /^\/index.html/g]
   });
- 
+
   return gulp.src('build/*')
     .pipe(revAll.revision())
     .pipe(publisher.publish())
@@ -121,15 +134,16 @@ gulp.task('publish', ['build.dist'], function() {
 });
 
 
-
 gulp.task('build',      ['html', 'less', 'js', 'assets']);
 gulp.task('build.dist', ['html.dist', 'less', 'js.dist', 'assets']);
 
 gulp.task('watch', function () {
-  gulp.watch(['src/index.html'], ['html']);
+  gulp.watch(['src/index.html','events/*.md'], ['html']);
   gulp.watch(['src/style.less'], ['less']);
   gulp.watch(paths.assets, ['assets']);
   gulp.watch(paths.js, ['js']);
 });
 
 gulp.task('default', ['serve', 'watch', 'build']);
+
+gulp.task('deploy', ['deploy:gh']);

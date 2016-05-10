@@ -1,6 +1,5 @@
 _site/
-/node_modules/
-/bower_components/
+node_modules
 .grunt
 css/*.css
 

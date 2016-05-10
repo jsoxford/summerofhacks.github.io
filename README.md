@@ -9,6 +9,7 @@ Summer of Hacks is an event series organised and run by [JSOxford](http://jsoxfo
 This is a web site.  You can run it locally with these commands
 
 ```bash
+
 # install the gulp task runner thing
 npm install --global gulp
 
@@ -37,5 +38,3 @@ We continuously build the site using [TravisCI](http://travis-ci.org). The confi
 travis encrypt GH_LOGIN=YOUR_GITHUB_USERNAME --add
 travis encrypt GH_TOKEN=YOUR_APPLICATION_TOKEN --add
 ```
-
-We have a [Tron-ci](http://tron-ci.herokuapp.com/jobs/1519935/) job to trigger a build every day at midnight, so scheduled pages and/or any time-sensitive preprocessing can occur without us having to modify the repository.
