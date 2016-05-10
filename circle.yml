@@ -1,0 +1,9 @@
+general:
+  artifacts:
+    - "build"
+
+deployment:
+  aws_test:
+    branch: data-driven
+    commands:
+      - 'gulp publish'
