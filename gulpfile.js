@@ -14,9 +14,7 @@ var RevAll = require('gulp-rev-all');
 var data = require('gulp-data');
 var handlebars = require('gulp-compile-handlebars');
 var moment = require('moment');
-var frontMatter = require('gulp-front-matter');
-var eventDataConcat = require('./lib/event-data-concat.js');
-var marked = require('gulp-marked')
+var eventData = require('./lib/event-data.js');
 
 var paths = {
   assets: [
@@ -33,8 +31,11 @@ var paths = {
 
 gulp.task('html', function() {
   return gulp.src('src/index.html')
-    .pipe(data(function(file) {
-      return {events:require('./build/events.json')};
+    .pipe(data(function(file, callback) {
+      // wrap in {events: … } for template
+      eventData('events', function(err, data) {
+        callback(err, data ? {events: data} : null)
+      })
     }))
     .pipe(handlebars(null, {
       helpers: {
@@ -89,15 +90,6 @@ gulp.task('assets', function() {
     .pipe(connect.reload());
 });
 
-// read in all the events into a (public) json file
-gulp.task('event-data', function() {
-  return gulp.src('events/*.md')
-    .pipe(frontMatter())
-    .pipe(marked())
-    .pipe(eventDataConcat('events.json'))
-    .pipe(gulp.dest('build'));
-});
-
 gulp.task('serve', ['build'], function() {
   connect.server({
     root: 'build',
@@ -142,12 +134,11 @@ gulp.task('publish', ['build.dist'], function() {
 });
 
 
-
 gulp.task('build',      ['html', 'less', 'js', 'assets']);
 gulp.task('build.dist', ['html.dist', 'less', 'js.dist', 'assets']);
 
 gulp.task('watch', function () {
-  gulp.watch(['src/index.html'], ['html']);
+  gulp.watch(['src/index.html','events/*.md'], ['html']);
   gulp.watch(['src/style.less'], ['less']);
   gulp.watch(paths.assets, ['assets']);
   gulp.watch(paths.js, ['js']);
