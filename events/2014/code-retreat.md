@@ -5,4 +5,4 @@ info: http://jsoxford.com/2014/soh-code-retreat/
 coc: http://url
 ---
 
-SusHack helps developers get together to create solutions to sustainability problems using their skills in development and lots of coffee.
+Write better code to a backdrop of pastries and burritos… the Code Retreat is a chance to hone your programming skills without the pressure of Getting Things Done.
