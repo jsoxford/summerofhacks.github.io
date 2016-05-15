@@ -138,7 +138,7 @@ gulp.task('build',      ['html', 'less', 'js', 'assets']);
 gulp.task('build.dist', ['html.dist', 'less', 'js.dist', 'assets']);
 
 gulp.task('watch', function () {
-  gulp.watch(['src/*.html','events/*.md'], ['html']);
+  gulp.watch(['src/*.html','events/*/*.md'], ['html']);
   gulp.watch(['src/style.less'], ['less']);
   gulp.watch(paths.assets, ['assets']);
   gulp.watch(paths.js, ['js']);
