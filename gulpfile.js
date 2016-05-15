@@ -30,13 +30,8 @@ var paths = {
 };
 
 gulp.task('html', function() {
-  return gulp.src('src/*.html')
-    .pipe(data(function(file, callback) {
-      // wrap in {events: … } for template
-      eventData('events', function(err, data) {
-        callback(err, data ? {events: data} : null)
-      })
-    }))
+  return gulp.src('src/index.html')
+    .pipe(data(eventData('events/2016/*.md')))
     .pipe(handlebars(null, {
       helpers: {
         short_date: function(str) {return moment(str).format("Do MMM");}
@@ -48,7 +43,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('html.dist', ['html', 'less'], function(){
-  return gulp.src('build/*.html')
+  return gulp.src('build/index.html')
     .pipe(inlinesource())
     .pipe(htmlmin({
       minifyJS: true,
@@ -138,7 +133,7 @@ gulp.task('build',      ['html', 'less', 'js', 'assets']);
 gulp.task('build.dist', ['html.dist', 'less', 'js.dist', 'assets']);
 
 gulp.task('watch', function () {
-  gulp.watch(['src/*.html','events/*/*.md'], ['html']);
+  gulp.watch(['src/index.html','events/*/*.md'], ['html']);
   gulp.watch(['src/style.less'], ['less']);
   gulp.watch(paths.assets, ['assets']);
   gulp.watch(paths.js, ['js']);
