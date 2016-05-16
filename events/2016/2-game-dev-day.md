@@ -1,5 +1,5 @@
 ---
-name: Games
+name: Game Dev Day
 date: 2016-07-23
 info: https://github.com/jsoxford/jsoxford.github.com/issues/207
 ---
