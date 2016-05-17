@@ -37,17 +37,17 @@ p {
 .actions a:hover {
   color: #FFF200;
 }
-#main {
+#head-right {
   -webkit-transition: all .2s;
           transition: all .2s;
 }
-.font-wait #main {
+.font-wait #head-right {
   opacity: 0;
   -webkit-transform: translate(10px, 0);
           transform: translate(10px, 0);
 }
-.font-waited #main,
-.wf-active #main {
+.font-waited #head-right,
+.wf-active #head-right {
   opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
@@ -65,42 +65,33 @@ p {
   font-size: .6em;
   display: block;
 }
-html {
-  height: 100%;
-}
-body {
+#head {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   margin: 0;
   min-height: 100%;
   -webkit-box-align: center;
-  -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
 }
-#head {
+#head-left {
   -webkit-transition: all .5s;
           transition: all .5s;
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
-#main {
+#head-right {
   -webkit-transition: all .7s;
           transition: all .7s;
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   text-align: left;
@@ -109,7 +100,6 @@ body {
   -webkit-transition: all 1s;
           transition: all 1s;
   -webkit-box-flex: 0.01;
-  -webkit-flex: 0.01;
       -ms-flex: 0.01;
           flex: 0.01;
   text-align: left;
@@ -158,26 +148,24 @@ body {
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
 }
-.has-content #head {
+.has-content #head-left {
   -webkit-box-flex: 0.7;
-  -webkit-flex: 0.7;
       -ms-flex: 0.7;
           flex: 0.7;
 }
-.has-content #main {
+.has-content #head-right {
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 @media (max-width: 450px) {
-  body {
+  #head {
     display: block;
   }
   #logo {
     height: 300px;
   }
-  #main {
+  #head-right {
     text-align: center;
   }
   .has-content section {
