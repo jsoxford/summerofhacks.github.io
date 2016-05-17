@@ -31,12 +31,7 @@ var paths = {
 
 gulp.task('html', function() {
   return gulp.src('src/index.html')
-    .pipe(data(function(file, callback) {
-      // wrap in {events: … } for template
-      eventData('events', function(err, data) {
-        callback(err, data ? {events: data} : null)
-      })
-    }))
+    .pipe(data(eventData('events/2016/*.md')))
     .pipe(handlebars(null, {
       helpers: {
         short_date: function(str) {return moment(str).format("Do MMM");}
@@ -123,7 +118,7 @@ gulp.task('deploy:aws', ['build.dist'], function() {
   });
 
   var revAll = new RevAll({
-    dontRenameFile: [/^\/favicon.ico$/g, /^\/index.html/g]
+    dontRenameFile: [/^\/favicon\.ico$/g, /^\/.*\.html/g]
   });
 
   return gulp.src('build/*')
@@ -138,7 +133,7 @@ gulp.task('build',      ['html', 'less', 'js', 'assets']);
 gulp.task('build.dist', ['html.dist', 'less', 'js.dist', 'assets']);
 
 gulp.task('watch', function () {
-  gulp.watch(['src/index.html','events/*.md'], ['html']);
+  gulp.watch(['src/index.html','events/*/*.md'], ['html']);
   gulp.watch(['src/style.less'], ['less']);
   gulp.watch(paths.assets, ['assets']);
   gulp.watch(paths.js, ['js']);

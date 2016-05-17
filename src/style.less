@@ -49,7 +49,7 @@ p {
 
 
 // only show text once fonts have loaded
-#main{
+#head-right {
   transition:all .2s;
   .font-wait & {
     opacity: 0;
@@ -81,11 +81,7 @@ p {
 
 // Positioning
 
-html{
-  height: 100%;
-}
-
-body{
+#head {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -94,11 +90,11 @@ body{
   align-items: center;
 }
 
-#head {
+#head-left {
   transition: all .5s;
   flex: 1;
 }
-#main {
+#head-right  {
   transition: all .7s;
   flex: 1;
   text-align:left;
@@ -153,7 +149,7 @@ body{
   }
 
   section.active{
-    opacity: 1; 
+    opacity: 1;
     transform: translate(0, 0);
 
     p {
@@ -162,22 +158,22 @@ body{
     }
   }
 
-  #head {
+  #head-left {
     flex: 0.7;
   }
-  #main {
+  #head-right  {
     flex: 1;
   }
 }
 
 @media (max-width: 450px) {
-  body{
+  #head {
     display: block;
   }
   #logo {
     height: 300px;
   }
-  #main{
+  #head-right {
     text-align: center;
   }
   .has-content section {
