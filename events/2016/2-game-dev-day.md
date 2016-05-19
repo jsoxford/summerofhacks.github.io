@@ -1,7 +1,7 @@
 ---
 name: Game Dev Day
 date: 2016-07-23
-info: https://github.com/jsoxford/jsoxford.github.com/issues/207
+info: http://www.meetup.com/JSOxford/events/231241336/
 ---
 
 Details to be announced
