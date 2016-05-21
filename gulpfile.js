@@ -24,7 +24,6 @@ var paths = {
   ],
   js: [
     'src/bower/webfontloader/webfontloader.js',
-    'src/bower/bean/bean.min.js',
     'src/script.js'
   ]
 };

@@ -42,16 +42,34 @@
   <body>
     <div id="head">
 
-    <div id="head-left">
-      <h1 id="logo">Summer of Hacks</h1>
+      <div id="head-left">
+        <h1 id="logo">Summer of Hacks</h1>
+      </div>
+
+      <div id="head-right">
+
+        {{#each events}}
+          <h2><a href="#{{name}}"><span class="date">{{short_date date}}</span> {{name}}</a></h2>
+        {{/each}}
+
+      </div>
+
     </div>
 
-    <div id="head-right">
+    <div id="content">
+
+      <h1>Oxford 2016</h1>
+
+      <p>
+        A series of community events
+      </p>
 
       {{#each events}}
         <section id="{{name}}">
 
-          <h2><a href="#{{name}}"><span class="date">{{short_date date}}</span> {{name}}</a></h2>
+          <h2>
+            <span class="date">{{short_date date}}</span> {{name}}
+          </h2>
 
           {{{body}}}
 
@@ -66,7 +84,6 @@
 
     </div>
 
-    </div>
 
     <script type="text/javascript" src="all.js" defer></script>
   </body>
