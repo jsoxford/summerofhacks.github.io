@@ -1,8 +1,23 @@
 @yellow: #FFEB3B;
 
 body {
-  font-family: 'Fredoka One', sans-serif;
+  font-family: Roboto, sans-serif;
   margin:0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fredoka One', sans-serif;
+
+  .wf-fredokaone-n4-active & {
+    font-weight: 100;
+  }
+}
+
+hr {
+  border:none;
+  border-bottom: 3px solid @yellow;
+  opacity: 0.4;
+  width: 60%;
 }
 
 * {
@@ -15,7 +30,7 @@ a {
 
 #head {
   background: @yellow;
-  height: 100vh;
+  min-height: 100vh;
   transition: all 1s;
   will-change: transform;
 
@@ -31,12 +46,39 @@ a {
     text-decoration: none;
     font-size:6vh;
     font-weight: 100;
+    display:block;
+
+    transition: transform .2s;
+    will-change: transform;
+    &:hover, &:focus {
+      transform: translateX(-.25em);
+    }
   }
 
   .date {
     display: block;
     font-size:.5em;
   }
+
+
+  // stack up on smaller devices
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+
+
+  // fade in heading text once font has loaded
+  // (or failed loading)
+  .js.font-wait & a {
+    opacity: 0;
+    transition: all .6s;
+  }
+  .js.font-wait.font-waited & a,
+  .js.font-wait.wf-fredokaone-n4-active & a
+   {
+    opacity: 1;
+  }
+
 }
 
 #head-left {
@@ -55,18 +97,37 @@ a {
   text-indent: -9999px;
   height: 300px;
   height: 50vmin;
-  // width: 100%;
 
   transition: all 2s;
   will-change: transform;
 
   .up & {
-    transform: translateY(-40px) rotate(-1.5deg) scale(.9);
+    transform: translateY(-30px) rotate(-1.5deg) scale(.8);
   }
 
 }
 
 
 #content {
-  margin:4vw;
+  margin:auto;
+  max-width: 40em;
+  padding: 0 1em;
+}
+
+.event {
+
+  h2 a {
+    text-decoration: none;
+  }
+
+  .date {
+    font-size: .5em;
+  }
+
+  // when a section has been linked to
+  &:target {
+    border-left: 3px solid @yellow;
+    padding-left: 10px;
+  }
+
 }
