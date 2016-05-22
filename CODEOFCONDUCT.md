@@ -8,7 +8,8 @@ Our events are dedicated to providing a harassment-free event experience for eve
 
 The JSOxford organisers are there to help you have a good time. If you have any questions, concerns or need help, please reach out to us:
 
-- Ryan Brooks: 07841 757984, ryan@ryanbrooks.co.uk
+- Ryan Brooks: 07841 757984, ryan@ryanbrooks.co.uk (slack - @ryan)
+- Ben Foxall: 07540838982, benfoxall@gmail.com (slack - @ben)
 
 ## The Less Quick Version
 
