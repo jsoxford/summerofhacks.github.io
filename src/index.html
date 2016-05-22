@@ -49,7 +49,7 @@
       <div id="head-right">
 
         {{#each events}}
-          <h2><a href="#{{name}}"><span class="date">{{short_date date}}</span> {{name}}</a></h2>
+          <h2><a href="#{{slug}}"><span class="date">{{short_date date}}</span> {{name}}</a></h2>
         {{/each}}
 
       </div>
@@ -58,17 +58,21 @@
 
     <div id="content">
 
-      <h1>Oxford 2016</h1>
+      <h1>Summer of Hacks is an annual series of friendly, practical &amp; free events organised by the Oxford tech community.</h1>
 
-      <p>
-        A series of community events
-      </p>
+      <hr />
+
+      <h2>Our 2016 events:</h2>
 
       {{#each events}}
-        <section id="{{name}}">
+        <section id="{{slug}}" class="event">
 
           <h2>
-            <span class="date">{{short_date date}}</span> {{name}}
+            <a href="#{{slug}}">
+              <small>{{short_date date}}</small>
+              –
+              {{name}}
+            </a>
           </h2>
 
           {{{body}}}

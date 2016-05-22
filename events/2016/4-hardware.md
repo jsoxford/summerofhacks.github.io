@@ -1,5 +1,6 @@
 ---
 name: Hardware
+slug: hardware
 date: 2016-09-17
 info: http://www.meetup.com/JSOxford/events/231241496/
 ---

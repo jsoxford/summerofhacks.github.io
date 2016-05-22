@@ -1,5 +1,6 @@
 ---
 name: Nodeschool
+slug: nodeschool
 date: 2016-06-11
 info: http://www.meetup.com/JSOxford/events/231241282/
 ---
