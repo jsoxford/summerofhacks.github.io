@@ -67,27 +67,63 @@
       {{#each events}}
         <section id="{{slug}}" class="event">
 
-          <h2>
+          <h1 class="event-title">
             <a href="#{{slug}}">
-              <small>{{short_date date}}</small>
-              –
               {{name}}
             </a>
-          </h2>
+          </h1>
+          <h2 class="event-date">{{short_date date}}</h2>
 
           {{{body}}}
 
-          {{#if info}}
-          <p class="actions">
-            <a href="{{info}}" target="_blank">About {{name}} &gt; </a>
-          </p>
+          {{#if organisers}}
+          <div class="organisers">
+            <h3>Organisers</h3>
+            {{#each organisers}}
+              <a class="organiser" href="{{url}}" title="{{name}}">
+                <img src="{{img}}" alt="{{name}}"/>
+              </a>
+            {{/each}}
+          </div>
+          {{/if}}
+
+
+          {{#if meetup}}
+          <div class="actions">
+            <h2 class="action">
+              <a href="{{meetup}}" target="_blank">Sign up for {{name}}</a>
+            </h2>
+          </div>
           {{/if}}
 
         </section>
       {{/each}}
 
-    </div>
+      <hr />
 
+      <h1>How to get involved</h1>
+
+      <h2>&rarr; Attend an event</h2>
+      <p>The best way to get involved is to come along to one of our events.</p>
+
+      <h2>&rarr; Sponsor Us</h2>
+      <p>To keep our events free, we depend on sponsors to fund food, drink and venue hire.  If you are able to help out - we'd really love to hear from you.</p>
+
+      <h2>&rarr; Slack</h2>
+      <p>We discuss Summer of Hacks on the <a href="slack.digitaloxford.com">digital oxford slack</a>. Come and say hi on the #soh channel.</p>
+
+      <h2>&rarr; Github</h2>
+      <p>A lot of our event organisation happens on GitHub. Feel free to comment on any of our <a href="https://github.com/jsoxford/jsoxford.github.com/issues?utf8=%E2%9C%93&q=label%3A%E2%98%80%EF%B8%8F%E2%98%80%EF%B8%8F%E2%98%80%EF%B8%8F%E2%98%80%EF%B8%8F%E2%98%80%EF%B8%8F+">SoH tickets</a>.</p>
+
+      <hr />
+
+      <h1>Code of Conduct</h1>
+
+      <p><strong>All</strong> of our events follow a code of conduct that you can read at: <a href="https://github.com/jsoxford/summerofhacks.github.io/blob/master/CODEOFCONDUCT.md">github.com/jsoxford/summerofhacks.github.io/blob/master/CODEOFCONDUCT.md</a></p>
+
+      <p>It's our absolute priority that attendees are safe and are feel respected. If you have any issues, concerns or questions then don't hesitate to contact us.</p>
+
+    </div>
 
     <script type="text/javascript" src="all.js" defer></script>
   </body>

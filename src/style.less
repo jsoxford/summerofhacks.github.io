@@ -115,19 +115,46 @@ a {
 }
 
 .event {
+  margin:4em 1em;
+}
 
-  h2 a {
+.event-title {
+  font-size: 3.5em;
+  text-align: center;
+  margin: 0;
+  a {text-decoration: none}
+}
+
+.event-date {
+  text-align: center;
+  margin: 0 0 2em 0;
+}
+
+
+.organisers {
+  text-align: center;
+}
+.organiser {
+  display:inline-block;
+  text-decoration: none;
+  // margin-right: .25em;
+
+  img {
+    display: inline-block;
+    vertical-align:middle;
+    max-width: 3em;
+    border-radius: 100%;
+  }
+}
+
+.actions {
+  text-align: center;
+  .action {
+    display: inline-block;
+    padding:.5em;
     text-decoration: none;
-  }
+    background: @yellow;
+    border-radius: 5px;
 
-  .date {
-    font-size: .5em;
   }
-
-  // when a section has been linked to
-  &:target {
-    border-left: 3px solid @yellow;
-    padding-left: 10px;
-  }
-
 }
