@@ -34,6 +34,9 @@ ga('send', 'pageview');
     head.classList.toggle('up', window.scrollY > 0)
   })
 
+  if(navigator.serviceWorker)
+    navigator.serviceWorker.register('sw.js')
+
 })(
   document.querySelector &&
   document.documentElement &&

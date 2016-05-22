@@ -15,6 +15,7 @@ var data = require('gulp-data');
 var handlebars = require('gulp-compile-handlebars');
 var moment = require('moment');
 var eventData = require('./lib/event-data.js');
+var rollup = require('gulp-rollup');
 
 var paths = {
   assets: [
@@ -69,11 +70,19 @@ gulp.task('js', function() {
     .pipe(connect.reload());
 });
 
-gulp.task('js.dist', ['js'], function() {
-  return gulp.src('build/all.js')
-    .pipe(uglify())
+gulp.task('sw', function(){
+  gulp.src('src/sw.js', {read: false})
+    .pipe(rollup({
+      format: 'cjs',
+    }))
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
+});
+
+gulp.task('js.dist', ['js', 'sw'], function() {
+  return gulp.src(['build/all.js', 'build/sw.js'])
+    .pipe(uglify())
+    .pipe(gulp.dest('build'));
 });
 
 // note: all asset paths are flattened
@@ -128,7 +137,7 @@ gulp.task('deploy:aws', ['build.dist'], function() {
 });
 
 
-gulp.task('build',      ['html', 'less', 'js', 'assets']);
+gulp.task('build',      ['html', 'less', 'js', 'sw', 'assets']);
 gulp.task('build.dist', ['html.dist', 'less', 'js.dist', 'assets']);
 
 gulp.task('watch', function () {
@@ -136,6 +145,7 @@ gulp.task('watch', function () {
   gulp.watch(['src/style.less'], ['less']);
   gulp.watch(paths.assets, ['assets']);
   gulp.watch(paths.js, ['js']);
+  gulp.watch('src/sw.js', ['sw']);
 });
 
 gulp.task('default', ['serve', 'watch', 'build']);
