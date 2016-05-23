@@ -10,6 +10,7 @@ The JSOxford organisers are there to help you have a good time. If you have any 
 
 - Ryan Brooks: 07841 757984, ryan@ryanbrooks.co.uk (slack - @ryan)
 - Ben Foxall: 07540838982, benfoxall@gmail.com (slack - @ben)
+- Pete West: 07565631681, peterjwest3@gmail.com (slack - @peterjwest)
 
 ## The Less Quick Version
 
