@@ -88,11 +88,13 @@
           {{/if}}
 
 
-          {{#if tickets}}
+          {{#if actions}}
           <div class="actions">
+            {{#each actions}}
             <h2 class="action">
-              <a href="{{tickets}}" target="_blank">Sign up for {{name}}</a>
+              <a href="{{url}}" target="_blank">{{title}}</a>
             </h2>
+            {{/each}}
           </div>
           {{/if}}
 
