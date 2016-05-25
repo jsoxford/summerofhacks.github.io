@@ -28,45 +28,15 @@ ga('send', 'pageview');
     return;
   }
 
+  var head = document.getElementById('head')
 
-  var current, html = document.documentElement;
+  window.addEventListener('scroll', function() {
+    head.classList.toggle('up', window.scrollY > 0)
+  })
 
-  bean.on(document.documentElement, 'click', 'section h2', function(event){
-    event.preventDefault();
-
-    // remove the active element
-    var active = document.querySelector('.active');
-    if(active) active.classList.remove('active');
-
-
-    var h2 = event.currentTarget;
-
-    if(h2 === current) {
-      // toggle off
-
-      html.classList.remove('has-content');
-      current = null;
-
-    } else {
-      // toggle on
-
-      html.classList.add('has-content');
-      h2.parentElement.classList.add('active');
-      current = h2;
-
-    }
-    
-  });
-
-  bean.on(logo, 'click', function(event){
-    // remove the active element
-    var active = document.querySelector('.active');
-    if(active) active.classList.remove('active');
-
-    html.classList.remove('has-content');
-    current = null;
-  });
-
+  if(navigator.serviceWorker)
+    navigator.serviceWorker.register('sw.js')
+     .catch(console.log.bind(console, 'Service Worker error –'))
 
 })(
   document.querySelector &&
