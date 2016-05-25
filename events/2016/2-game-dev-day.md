@@ -1,6 +1,5 @@
 ---
 name: Game Dev Day
-slug: game-dev-day
 date: 2016-07-23
 tickets: http://www.meetup.com/JSOxford/events/231241336/
 ---

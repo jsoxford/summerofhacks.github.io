@@ -1,6 +1,5 @@
 ---
 name: Code Retreat
-slug: code-retreat
 date: 2016-08-27
 tickets: http://www.meetup.com/JSOxford/events/231241391/
 ---
