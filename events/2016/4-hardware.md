@@ -7,7 +7,7 @@ actions:
     url: http://www.meetup.com/JSOxford/events/231241496/
 ---
 
-This is a day of hacking on hardware. It's for anyone who is interested in learning about hardware and there is no minimum entry requirememts other than an equisitive mind.
+This is a day of hacking on hardware. It's for anyone who is interested in learning about hardware and there is no minimum entry requirememts, other than an equisitive mind.
 
 If you've never touched a breadboard before, that's fine – we have some starter kits and plenty of helpful people to guide you. If you're a bit more experienced that's great too, as you'll get to play with some new kit or hack on a project with like-minded people.
 
