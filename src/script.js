@@ -36,6 +36,7 @@ ga('send', 'pageview');
 
   if(navigator.serviceWorker)
     navigator.serviceWorker.register('sw.js')
+     .catch(console.log.bind(console, 'Service Worker error –'))
 
 })(
   document.querySelector &&
